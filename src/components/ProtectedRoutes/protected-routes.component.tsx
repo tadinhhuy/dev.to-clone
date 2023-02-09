@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { PUBLIC_ROUTES } from '@/constants/routes/routes';
 
 interface IProtectedRoutes {
-  children?: JSX.Element;
+  children: JSX.Element;
 }
 
 function useAuth() {
@@ -16,7 +16,7 @@ const ProtectedRoutes = ({ children }: IProtectedRoutes) => {
   if (!auth) {
     return <Navigate to={PUBLIC_ROUTES.HOME} replace />;
   }
-  return children as JSX.Element;
+  return children;
 };
 
 export default ProtectedRoutes;

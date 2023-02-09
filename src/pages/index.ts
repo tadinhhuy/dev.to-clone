@@ -1,5 +1,2 @@
-import Home from './home';
-
-export { Home };
-
+export * from './home'
 export * from './user';
