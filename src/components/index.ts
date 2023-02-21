@@ -1,2 +1,2 @@
-export * from './Header';
-export * from './ProtectedRoutes';
+export * from './header';
+export * from './protected-routes';
