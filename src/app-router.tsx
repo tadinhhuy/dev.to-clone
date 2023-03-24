@@ -1,8 +1,9 @@
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/constants/routes/routes';
-import ProtectedRoutes from './components/ProtectedRoutes/protected-routes.component';
+import ArticleLayout from './components/layouts/article-layout';
+import ProtectedRoutes from './components/protected-routes/protected-routes.comp';
 
 const HomePage = lazy(() => import('./pages/home'));
 const UserPage = lazy(() => import('./pages/user'));
@@ -12,6 +13,11 @@ const publicRouteList = [
     pathKey: PUBLIC_ROUTES.HOME,
     label: 'Home',
     component: <HomePage />,
+  },
+  {
+    pathKey: PUBLIC_ROUTES.ARTICLE,
+    label: 'Article',
+    component: <ArticleLayout />,
   },
 ];
 
@@ -23,7 +29,7 @@ const privateRouteList = [
   },
 ];
 
-const AppRouter: React.FC = () => {
+const AppRouter = () => {
   return (
     <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>

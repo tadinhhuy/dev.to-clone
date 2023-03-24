@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import Header from '@/components/header';
+import ContentLayout from '@/components/layouts/content-layout';
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
     <>
-      <div className="text-3xl font-bold underline">Home Page</div>
-      <Link to="/user">User</Link>
+      <Header />
+      <ContentLayout />
     </>
   );
 };

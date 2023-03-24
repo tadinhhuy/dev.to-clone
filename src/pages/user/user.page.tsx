@@ -1,7 +1,10 @@
-import React from 'react';
-
-const User: React.FC = () => {
-  return <div className="text-3xl font-bold underline">Protected Page</div>;
+const User = () => {
+  return (
+    <div className="text-3xl font-bold underline">
+      Protected Page
+      <div>testing</div>
+    </div>
+  );
 };
 
 export default User;

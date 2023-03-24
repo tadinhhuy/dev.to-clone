@@ -1,3 +1,3 @@
-import User from './user.page'
+import User from './user.page';
 
 export default User;
