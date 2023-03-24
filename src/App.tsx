@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
-import AppRouter from './AppRouter';
+import { Fragment } from 'react';
+import AppRouter from './app-router';
 import './main.css';
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <Fragment>
       <AppRouter />

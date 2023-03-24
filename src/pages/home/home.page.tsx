@@ -1,8 +1,7 @@
-import React from 'react';
-import ContentLayout from '@/components/content-layout';
 import Header from '@/components/header';
+import ContentLayout from '@/components/layouts/content-layout';
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
     <>
       <Header />

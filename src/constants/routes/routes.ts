@@ -1,6 +1,6 @@
 export enum PUBLIC_ROUTES {
   HOME = '/',
-  ARTICLE = 'article'
+  ARTICLE = 'article',
 }
 
 export enum PRIVATE_ROUTES {

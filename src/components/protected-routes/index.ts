@@ -1,3 +1,3 @@
-import ProtectedRoutes from './protected-routes.component'
+import ProtectedRoutes from './protected-routes.comp';
 
 export default ProtectedRoutes;

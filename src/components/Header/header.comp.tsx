@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from "react";
 
 const Header = () => {
   return (
@@ -17,4 +17,4 @@ const Header = () => {
   );
 };
 
-export default React.memo(Header);
+export default memo(Header);
