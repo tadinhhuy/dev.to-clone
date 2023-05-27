@@ -1,3 +1,1 @@
-import ProtectedRoutes from './protected-routes.comp';
-
-export default ProtectedRoutes;
+export { default as ProtectedRoutes } from './protected-routes.comp';
