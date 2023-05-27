@@ -1,10 +1,8 @@
-import Header from '@/components/header';
-import ContentLayout from '@/components/layouts/content-layout';
+import { ContentLayout } from '@/components';
 
 const Home = () => {
   return (
     <>
-      <Header />
       <ContentLayout />
     </>
   );
