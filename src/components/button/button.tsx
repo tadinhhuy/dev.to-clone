@@ -1,13 +1,13 @@
 import clsx from 'clsx';
-import { memo } from 'react';
+import { ButtonHTMLAttributes, memo } from 'react';
 
 type Variant = 'text' | 'outlined' | 'contained';
 
-type Button = {
-  variant: Variant;
+type ButtonProps = {
+  variant?: Variant;
   className?: string;
   children: React.ReactNode;
-};
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const variantStyles: { [key in Variant]: string } = {
   text: clsx(
@@ -26,8 +26,12 @@ const variantStyles: { [key in Variant]: string } = {
   ),
 };
 
-const Button = ({ variant = 'outlined', className = '', children }: Button) => {
-  return <button className={clsx(variantStyles[variant], className)}>{children}</button>;
+const Button = ({ variant = 'outlined', className = '', children, ...rest }: ButtonProps) => {
+  return (
+    <button className={clsx(variantStyles[variant], className)} {...rest}>
+      {children}
+    </button>
+  );
 };
 
 export default memo(Button);
