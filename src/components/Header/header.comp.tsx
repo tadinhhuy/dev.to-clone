@@ -19,13 +19,13 @@ const Header = () => {
   };
 
   return (
-    <div className="border-bottom h-14 border">
-      <div className="column mx-24 flex h-full justify-between px-4">
+    <div className="border-bottom fixed top-0 h-[3.6rem] w-full border bg-white shadow-sm">
+      <div className="column mx-[85px] flex h-full justify-between px-[16px]">
         <div className="flex items-center">
           <div>
             <img src={LOGO} alt="logo" loading="lazy" className="h-[2.5rem]" />
           </div>
-          <div className="w-96">
+          <div className="w-[420px]">
             <SearchInput onSearch={handleSearch} />
           </div>
         </div>
