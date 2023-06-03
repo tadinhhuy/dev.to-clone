@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 import { memo } from 'react';
 import { GrNotification } from 'react-icons/gr';
+import { Link } from 'react-router-dom';
 import Avatar from '@/components/avatar';
 import Button from '@/components/button';
+import { PUBLIC_ROUTES } from '@/constants/routes/routes';
 import { useAuth } from '@/hooks';
 import SearchInput from './search-input.comp';
 
@@ -19,12 +21,12 @@ const Header = () => {
   };
 
   return (
-    <div className="border-bottom fixed top-0 h-[3.6rem] w-full border bg-white shadow-sm">
-      <div className="column mx-[85px] flex h-full justify-between px-[16px]">
+    <header className="border-bottom fixed top-0 h-[3.6rem] w-full border bg-white shadow-sm">
+      <div className="column mx-[106px] flex h-full justify-between px-[16px]">
         <div className="flex items-center">
-          <div>
+          <Link to={PUBLIC_ROUTES.HOME}>
             <img src={LOGO} alt="logo" loading="lazy" className="h-[2.5rem]" />
-          </div>
+          </Link>
           <div className="w-[420px]">
             <SearchInput onSearch={handleSearch} />
           </div>
@@ -50,7 +52,7 @@ const Header = () => {
           </div>
         )}
       </div>
-    </div>
+    </header>
   );
 };
 
