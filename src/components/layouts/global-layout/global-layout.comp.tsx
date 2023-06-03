@@ -5,7 +5,7 @@ const GlobalLayout = ({ children }: { children: JSX.Element }) => {
     <div>
       <Header />
       <div className="bg-neutral-100">
-        <main className="mx-[106px] mt-14 min-h-[calc(100dvh-3.5rem)] p-4">{children}</main>
+        <div className="mx-[106px] mt-14 min-h-[calc(100dvh-3.5rem)] p-4">{children}</div>
       </div>
       <footer className="h-60 bg-neutral-200 p-10">Footer</footer>
     </div>
