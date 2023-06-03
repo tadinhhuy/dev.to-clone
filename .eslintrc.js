@@ -30,6 +30,7 @@ module.exports = {
     //disabled
     'react/react-in-jsx-scope': 'off',
     "import/no-unresolved": "off",
+    "import/named": "off",
 
     //warn
     'react/jsx-no-target-blank': 'warn',
