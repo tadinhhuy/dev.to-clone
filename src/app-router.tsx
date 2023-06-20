@@ -1,32 +1,49 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, RouteProps } from 'react-router-dom';
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/constants/routes/routes';
 import { ArticleLayout, GlobalLayout, ProtectedRoutes } from './components';
 
 const HomePage = lazy(() => import('./pages/home'));
 const UserPage = lazy(() => import('./pages/user'));
+const ListingPage = lazy(() => import('./pages/listings'));
 
-const publicRouteList = [
+type TRoute = {
+  children?: TRoute[];
+  key: string;
+} & RouteProps;
+
+const publicRouteList: TRoute[] = [
   {
-    pathKey: PUBLIC_ROUTES.HOME,
-    label: 'Home',
-    component: <HomePage />,
+    path: PUBLIC_ROUTES.HOME,
+    key: 'Home',
+    element: <HomePage />,
   },
   {
-    pathKey: PUBLIC_ROUTES.ARTICLE,
-    label: 'Article',
-    component: <ArticleLayout />,
+    path: PUBLIC_ROUTES.ARTICLE,
+    key: 'Article',
+    element: <ArticleLayout />,
+  },
+  { path: `${PUBLIC_ROUTES.LISTINGS}`, key: 'Listings', element: <ListingPage /> },
+];
+
+const privateRouteList: TRoute[] = [
+  {
+    path: PRIVATE_ROUTES.USER,
+    key: 'User',
+    element: <UserPage />,
   },
 ];
 
-const privateRouteList = [
-  {
-    pathKey: PRIVATE_ROUTES.USER,
-    label: 'User',
-    component: <UserPage />,
-  },
-];
+// const renderRoute = ({ routes }: { routes: TRoute[] }) => {
+//   return publicRouteList?.map((route) => {
+//     if (!route.children || route.children?.length === 0) {
+//       return <Route key={route.key} element={route.element} path="" />;
+//     }
+//     return <Route key={route.key} element={route.element} path="" />;
+//     // const { element: Layout, path } = route;
+//   });
+// };
 
 const AppRouter = () => {
   return (
@@ -35,16 +52,16 @@ const AppRouter = () => {
         <GlobalLayout>
           <Routes>
             {publicRouteList?.map((publicRoute) => {
-              const { pathKey, label, component } = publicRoute;
-              return <Route key={label} path={pathKey} element={component} />;
+              const { path, element } = publicRoute;
+              return <Route key={path} path={path} element={element} />;
             })}
             {privateRouteList?.map((privateRoute) => {
-              const { pathKey, label, component } = privateRoute;
+              const { path, element } = privateRoute;
               return (
                 <Route
-                  key={label}
-                  path={pathKey}
-                  element={<ProtectedRoutes>{component}</ProtectedRoutes>}
+                  key={path}
+                  path={path}
+                  element={<ProtectedRoutes>{element} </ProtectedRoutes>}
                 />
               );
             })}
