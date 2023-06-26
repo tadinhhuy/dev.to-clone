@@ -2,7 +2,8 @@ import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router';
 import { BrowserRouter, RouteProps } from 'react-router-dom';
 import { PRIVATE_ROUTES, PUBLIC_ROUTES } from '@/constants/routes/routes';
-import { ArticleLayout, GlobalLayout, ProtectedRoutes } from './components';
+import { ProtectedRoutes } from './components';
+import { ArticleLayout, GlobalLayout } from './layouts';
 
 const HomePage = lazy(() => import('./pages/home'));
 const UserPage = lazy(() => import('./pages/user'));
@@ -36,12 +37,18 @@ const privateRouteList: TRoute[] = [
 ];
 
 // const renderRoute = ({ routes }: { routes: TRoute[] }) => {
-//   return publicRouteList?.map((route) => {
+//   return routes?.map((route) => {
 //     if (!route.children || route.children?.length === 0) {
-//       return <Route key={route.key} element={route.element} path="" />;
+//       return <Route key={route.key} element={route.element} path={route.path} />;
 //     }
-//     return <Route key={route.key} element={route.element} path="" />;
-//     // const { element: Layout, path } = route;
+//     const { element: Layout } = route;
+//     return (
+//       <Routes>
+//         <Route element={<Layout />}>
+//           {renderRoute(route.children)}
+//         </Route>
+//       </Routes>
+//     );
 //   });
 // };
 
