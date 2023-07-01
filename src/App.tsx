@@ -1,12 +1,12 @@
-import { Fragment } from 'react';
 import AppRouter from './app-router';
 import './main.css';
+import QueryClientProvider from './providers/query-client-provider';
 
 const App = () => {
   return (
-    <Fragment>
+    <QueryClientProvider>
       <AppRouter />
-    </Fragment>
+    </QueryClientProvider>
   );
 };
 
