@@ -1,11 +1,13 @@
 import clsx from 'clsx';
 import { ButtonHTMLAttributes, memo } from 'react';
+import { Link, LinkProps } from 'react-router-dom';
 
 type Variant = 'text' | 'outlined' | 'contained';
 
 type ButtonProps = {
   variant?: Variant;
   className?: string;
+  href?: string;
   children: React.ReactNode;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -26,12 +28,27 @@ const variantStyles: { [key in Variant]: string } = {
   ),
 };
 
-const Button = ({ variant = 'outlined', className = '', children, ...rest }: ButtonProps) => {
-  return (
-    <button className={clsx(variantStyles[variant], className)} {...rest}>
-      {children}
-    </button>
-  );
+const Button = ({
+  variant = 'outlined',
+  href = '',
+  className = '',
+  children,
+  ...rest
+}: ButtonProps) => {
+  const props = {
+    className: clsx(variantStyles[variant], className),
+    ...rest,
+  };
+
+  if (href) {
+    return (
+      <Link {...(rest as LinkProps)} to={href}>
+        {children}
+      </Link>
+    );
+  }
+
+  return <button {...props}>{children}</button>;
 };
 
 export default memo(Button);
